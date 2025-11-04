@@ -5,8 +5,8 @@ import sitemap from '@astrojs/sitemap';
 import { fileURLToPath } from 'node:url';
 
 export default defineConfig({
-  site: 'https://ademoments.github.io', 
-  base: '/portfolio',                    
+  site: 'https://ademoments.github.io',
+  base: '/portfolio',
   integrations: [react(), tailwind({ applyBaseStyles: false }), sitemap()],
   prefetch: true,
   vite: {
