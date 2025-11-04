@@ -1,0 +1,16 @@
+---
+const script = `
+  const btn = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+  const stored = localStorage.getItem('theme');
+  if (stored === 'dark' || (!stored && matchMedia('(prefers-color-scheme: dark)').matches)) {
+    root.classList.add('dark');
+  }
+  btn?.addEventListener('click', () => {
+    root.classList.toggle('dark');
+    localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+  });
+`;
+---
+<button id="theme-toggle" class="rounded-xl border px-3 py-1 text-sm">🌗</button>
+<script is:inline>{script}</script>

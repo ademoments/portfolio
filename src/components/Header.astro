@@ -1,0 +1,15 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+---
+<header class="sticky top-0 z-50 backdrop-blur bg-white/70 dark:bg-slate-900/70 border-b border-slate-200/30 dark:border-white/10">
+  <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="/" class="font-semibold">Adem BR</a>
+    <nav class="hidden md:flex gap-6 text-sm">
+      <a href="#about" class="hover:underline">À propos</a>
+      <a href="#experience" class="hover:underline">Expériences</a>
+      <a href="#projects" class="hover:underline">Projets</a>
+      <a href="#contact" class="hover:underline">Contact</a>
+    </nav>
+    <ThemeToggle />
+  </div>
+</header>

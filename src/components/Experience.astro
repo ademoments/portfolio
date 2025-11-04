@@ -1,0 +1,27 @@
+---
+import SectionTitle from "./SectionTitle.astro";
+import { getCollection } from "astro:content";
+const items = (await getCollection("experience")).sort((a,b)=>(a.data.order??0)-(b.data.order??0));
+---
+<SectionTitle id="experience" title="Expériences" subtitle="Rôles, missions, impact">
+  <ol class="relative border-s-2 border-slate-200/40 dark:border-white/10 space-y-10 ps-6">
+    {items.map(({ data, body, slug }) => (
+      <li class="ms-4" id={slug}>
+        <div class="absolute -left-[11px] h-5 w-5 rounded-full bg-indigo-600"></div>
+        <div class="rounded-2xl border border-slate-200/30 dark:border-white/10 bg-white/50 dark:bg-white/5 backdrop-blur shadow-lg p-5">
+          <div class="flex items-center justify-between gap-4">
+            {data.link ? <a class="font-semibold text-indigo-600" href={data.link} target="_blank">{data.company}</a> : <span class="font-semibold">{data.company}</span>}
+            <span class="text-xs opacity-70">{data.period}</span>
+          </div>
+          <p class="text-sm mt-1">{data.role}</p>
+          {data.tech?.length && (
+            <div class="mt-3 flex flex-wrap gap-2 text-xs opacity-80">
+              {data.tech.map((t) => <span class="rounded-full border px-2 py-0.5">{t}</span>)}
+            </div>
+          )}
+          <div class="prose dark:prose-invert mt-3" set:html={body} />
+        </div>
+      </li>
+    ))}
+  </ol>
+</SectionTitle>
